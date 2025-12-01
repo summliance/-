@@ -250,9 +250,14 @@ class CoupleMenuApp {
         });
 
         // 添加菜品按钮
-        document.getElementById('addDishBtn').addEventListener('click', () => {
-            this.openDishModal();
-        });
+        const addDishBtn = document.getElementById('addDishBtn');
+        if (addDishBtn) {
+            addDishBtn.addEventListener('click', () => {
+                this.openDishModal();
+            });
+        } else {
+            console.error('找不到添加菜品按钮！');
+        }
 
         // 关闭菜品模态框
         document.getElementById('closeDishModal').addEventListener('click', () => {
@@ -569,7 +574,6 @@ class CoupleMenuApp {
         } else {
             title.textContent = '添加菜品';
             document.getElementById('dishForm').reset();
-            document.getElementById('imagePreview').innerHTML = '';
         }
         
         this.renderDishCategoriesInForm();
